@@ -85,10 +85,14 @@ const Login = () => {
               login with Email
             </Button>
           </Box>
-
+          S
           <Typography variant="subtitle1" color="white" mt={2}>
             {" "}
-            No account <Link to="sign up"> sign up</Link>
+            No account{" "}
+            <Link className="Link" to="signUp">
+              {" "}
+              sign up
+            </Link>
           </Typography>
         </Box>
       </Box>
