@@ -4,7 +4,6 @@ import {
   DialogActions,
   DialogTitle,
   DialogContent,
-  DialogContentText,
   FormControl,
   InputLabel,
   InputAdornment,
@@ -12,9 +11,17 @@ import {
   Button,
   Input,
   Slide,
+  Icon,
+  TextField,
+  OutlinedInput,
 } from "@mui/material";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { GrMail } from "react-icons/gr";
+import { motion } from "framer-motion";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { auth } from "./Auth";
 
+import { useNavigate } from "react-router-dom";
 // to handle transition
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -23,15 +30,44 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const LoginWithEmail = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [emailError, setEmailError] = useState("");
+
   // to show password onClick
   const visiblePassword = () => {
     setShowPassword(!showPassword);
   };
 
   // to handle login with Email
+  const navigate = useNavigate();
+  const login = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((user) => {
+        navigate("home");
+      })
+      .catch((error) => {});
+  };
   return (
     <>
-      <Button onClick={() => setOpen(true)}> Login with Email</Button>
+      <Button
+        component={motion.div}
+        whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.3 },
+        }}
+        whileTap={{ scale: 0.9 }}
+        aria-label="login with email"
+        variant="outlined"
+        onClick={() => setOpen(true)}
+      >
+        <Icon>
+          <GrMail />
+        </Icon>{" "}
+        Login with Email
+      </Button>
       <Dialog
         maxWidth="md"
         open={open}
@@ -44,29 +80,37 @@ const LoginWithEmail = () => {
         <DialogTitle id="dialog-title">Login with Email</DialogTitle>
         <DialogContent>
           <FormControl>
-            <FormControl variant="standard" sx={{ m: 1, mt: 3, width: "25ch" }}>
-              <InputLabel htmlFor="standard-adornment-email">
-                UserName
-              </InputLabel>
-              <Input id="standard-adornment-weight" type="Email" />
-            </FormControl>
+            <TextField
+              aria-label="enter your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{ marginTop: 2 }}
+              size="small"
+              id="outlined-name"
+              label="userName"
+            />
 
             <FormControl
-              fullWidth={true}
-              sx={{ m: 1, width: "25ch" }}
-              variant="standard"
+              aria-label="password"
+              variant="outlined"
+              size="small"
+              sx={{ marginTop: 2, marginBottom: 2 }}
             >
-              <InputLabel htmlFor="standard-adornment-password">
+              <InputLabel htmlFor="outlined-adornment-password">
                 Password
               </InputLabel>
-              <Input
-                id="standard-adornment-password"
+              <OutlinedInput
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
+                      disableRipple
                       aria-label="toggle password visibility"
                       onClick={visiblePassword}
+                      edge="end"
                     >
                       {showPassword ? (
                         <AiOutlineEye />
@@ -76,13 +120,21 @@ const LoginWithEmail = () => {
                     </IconButton>
                   </InputAdornment>
                 }
+                label="Password"
               />
             </FormControl>
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpen(false)}> Cancel</Button>
-          <Button autoFocus onClick={() => setOpen(false)}>
+          <Button
+            variant="contained"
+            size="small"
+            color="error"
+            onClick={() => setOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button variant="contained" autoFocus onClick={login}>
             login
           </Button>
         </DialogActions>
