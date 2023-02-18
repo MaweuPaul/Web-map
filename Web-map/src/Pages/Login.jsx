@@ -1,28 +1,10 @@
 import React, { useState } from "react";
-import { Box, Button, duration, Icon, Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { auth } from "../Utilities/Auth";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { GrMail } from "react-icons/gr";
+import { Link } from "react-router-dom";
+import LoginWithGoogle from "../Utilities/LoginWithGoogle";
+import { LoginWithEmail } from "../Components/Index";
 const Login = () => {
-  // login with google
-  const provider = new GoogleAuthProvider();
-  const navigate = useNavigate();
-  const Google = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        navigate("home");
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
   // document title on mount
   useState(() => {
     document.title = "Login";
@@ -50,42 +32,11 @@ const Login = () => {
           transition={{ duration: 0.4, delay: 0.9 }}
         >
           <Box mt={3}>
-            <Button
-              component={motion.div}
-              whileHover={{
-                scale: 1.1,
-                transition: { duration: 0.3 },
-              }}
-              whileTap={{ scale: 0.9 }}
-              aria-label="login"
-              variant="contained"
-              type="submit"
-              onClick={Google}
-            >
-              <Icon>
-                <FcGoogle size={20} />
-              </Icon>
-              Login with google
-            </Button>
+            <LoginWithGoogle />
           </Box>
           <Box mt={2}>
-            <Button
-              aria-label="login"
-              variant="contained"
-              component={motion.div}
-              whileHover={{
-                scale: 1.1,
-                transition: { duration: 0.3 },
-              }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Icon>
-                <GrMail />
-              </Icon>
-              login with Email
-            </Button>
+            <LoginWithEmail />
           </Box>
-          S
           <Typography variant="subtitle1" color="white" mt={2}>
             {" "}
             No account{" "}
