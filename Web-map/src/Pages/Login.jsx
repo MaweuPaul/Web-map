@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import LoginWithGoogle from "../Utilities/LoginWithGoogle";
-import { LoginWithEmail } from "../Components/Index";
+
+import {
+  LoginWithEmail,
+  LoginWithGoogle,
+  CreateAccount,
+} from "../Components/Index";
 const Login = () => {
   // document title on mount
   useState(() => {
@@ -37,14 +41,10 @@ const Login = () => {
           <Box mt={2}>
             <LoginWithEmail />
           </Box>
-          <Typography variant="subtitle1" color="white" mt={2}>
-            {" "}
-            No account{" "}
-            <Link className="Link" to="signUp">
-              {" "}
-              sign up
-            </Link>
-          </Typography>
+          <Typography color="white"> or</Typography>
+          <Box>
+            <CreateAccount />
+          </Box>
         </Box>
       </Box>
     </Stack>
