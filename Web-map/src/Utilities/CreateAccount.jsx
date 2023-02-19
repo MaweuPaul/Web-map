@@ -10,12 +10,16 @@ import {
   InputAdornment,
   InputLabel,
   Slide,
+  TextField,
+  OutlinedInput,
 } from "@mui/material";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { auth } from "./Auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { Signup } from "../Components/Index";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -24,12 +28,32 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 const CreateAccount = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [open, setOpen] = useState(false);
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
   // to show password onClick
   const visiblePassword = () => {
     setShowPassword(!showPassword);
   };
 
   // to handle create account logic
+  const navigate = useNavigate();
+  const SignUp = (e) => {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((user) => {
+        navigate("/");
+        setEmail("");
+        setPassword("");
+      })
+
+      .catch((error) => {
+        setEmail("");
+        setPassword("");
+        setError(error.message);
+      });
+  };
   return (
     <>
       {" "}
@@ -40,7 +64,7 @@ const CreateAccount = () => {
           transition: { duration: 0.3 },
         }}
         whileTap={{ scale: 0.9 }}
-        aria-label="login with email"
+        aria-label="create account"
         onClick={() => setOpen(true)}
         variant="outlined"
       >
@@ -58,29 +82,47 @@ const CreateAccount = () => {
       >
         <DialogTitle> Sign Up</DialogTitle>
         <DialogContent>
-          <FormControl>
-            <FormControl variant="standard" sx={{ m: 1, mt: 3, width: "25ch" }}>
-              <InputLabel htmlFor="standard-adornment-email">
-                UserName
-              </InputLabel>
-              <Input id="standard-adornment-weight" type="Email" />
-            </FormControl>
+          <FormControl onSubmit={SignUp}>
+            <TextField
+              aria-label="enter your email"
+              value={email.toLocaleLowerCase()}
+              onChange={(e) => setEmail(e.target.value)}
+              sx={{ marginTop: 2 }}
+              size="small"
+              id="outlined-name"
+              label="Email"
+              type="email"
+            />
+            <TextField
+              aria-label="enter your email"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              sx={{ marginTop: 2 }}
+              size="small"
+              id="outlined-name"
+              label="user name"
+            />
             <FormControl
-              fullWidth={true}
-              sx={{ m: 1, width: "25ch" }}
-              variant="standard"
+              aria-label="password"
+              variant="outlined"
+              size="small"
+              sx={{ marginTop: 2, marginBottom: 2 }}
             >
-              <InputLabel htmlFor="standard-adornment-password">
+              <InputLabel htmlFor="outlined-adornment-password">
                 Password
               </InputLabel>
-              <Input
-                id="standard-adornment-password"
+              <OutlinedInput
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                id="outlined-adornment-password"
                 type={showPassword ? "text" : "password"}
                 endAdornment={
                   <InputAdornment position="end">
                     <IconButton
+                      disableRipple
                       aria-label="toggle password visibility"
                       onClick={visiblePassword}
+                      edge="end"
                     >
                       {showPassword ? (
                         <AiOutlineEye />
@@ -90,14 +132,22 @@ const CreateAccount = () => {
                     </IconButton>
                   </InputAdornment>
                 }
+                label="Password"
               />
             </FormControl>
           </FormControl>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => setOpen(false)}>Cancel</Button>
-          <Button autoFocus onClick={() => setOpen(false)}>
-            login
+          <Button
+            color="error"
+            size="small"
+            variant="contained"
+            onClick={() => setOpen(false)}
+          >
+            Cancel
+          </Button>
+          <Button variant="contained" size="small" autoFocus onClick={SignUp}>
+            CreateAccount
           </Button>
         </DialogActions>
       </Dialog>
