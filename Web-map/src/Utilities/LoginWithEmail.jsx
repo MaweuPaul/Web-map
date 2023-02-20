@@ -40,7 +40,7 @@ const LoginWithEmail = () => {
     setShowPassword(!showPassword);
   };
 
-  // to handle login with Email
+  // to handle
   const navigate = useNavigate();
   const login = (e) => {
     e.preventDefault();
