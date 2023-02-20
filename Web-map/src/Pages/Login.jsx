@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 
 import {
   LoginWithEmail,
   LoginWithGoogle,
   CreateAccount,
 } from "../Components/Index";
+
+import useStyles from "../Components/MaterialUiStyles";
+
 const Login = () => {
+  const classes = useStyles();
   // document title on mount
   useState(() => {
     document.title = "Login";
   }, []);
 
   return (
-    <Stack mt={20}>
-      <Box textAlign="center">
+    <Stack className="hero">
+      <Box textAlign="center" mt={{ xs: 7, sm: 10, md: 20, lg: 30 }}>
         <Typography
           variant="h3"
           color="white"
