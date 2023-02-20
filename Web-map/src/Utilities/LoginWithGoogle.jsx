@@ -10,8 +10,11 @@ const LoginWithGoogle = () => {
   const navigate = useNavigate();
   const Google = () => {
     signInWithPopup(auth, provider)
-      .then((result) => {
+      .then((user) => {
         navigate("home");
+        const userName = user.user.displayName;
+        const displayPicture = user.user.photoURL;
+        console.log(user, userName, displayPicture);
       })
       .catch((error) => {
         alert(error.message);
