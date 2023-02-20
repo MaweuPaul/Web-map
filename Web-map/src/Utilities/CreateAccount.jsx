@@ -12,6 +12,8 @@ import {
   Slide,
   TextField,
   OutlinedInput,
+  Grid,
+  CardMedia,
 } from "@mui/material";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -72,6 +74,7 @@ const CreateAccount = () => {
         Create account
       </Button>
       <Dialog
+        backgroundColor="red"
         maxWidth="md"
         open={open}
         onClose={() => setOpen(false)}
@@ -80,76 +83,97 @@ const CreateAccount = () => {
         aria-labelledby="dialog-title"
         aria-describedby="dialog-description"
       >
-        <DialogTitle> Sign Up</DialogTitle>
-        <DialogContent>
-          <FormControl onSubmit={SignUp}>
-            <TextField
-              aria-label="enter your email"
-              value={email.toLocaleLowerCase()}
-              onChange={(e) => setEmail(e.target.value)}
-              sx={{ marginTop: 2 }}
-              size="small"
-              id="outlined-name"
-              label="Email"
-              type="email"
+        <DialogTitle align="center" variant="h5">
+          {" "}
+          Sign Up
+        </DialogTitle>
+
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid item xs={6}>
+            <img
+              width={400}
+              className="loginImage"
+              src="https://evnts254.s3.eu-west-2.amazonaws.com/event-posters/85cb4fb3c80fbc607347349980f4621bweb%20mapping.jpg"
+              alt=""
             />
-            <TextField
-              aria-label="enter your email"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-              sx={{ marginTop: 2 }}
-              size="small"
-              id="outlined-name"
-              label="user name"
-            />
-            <FormControl
-              aria-label="password"
-              variant="outlined"
-              size="small"
-              sx={{ marginTop: 2, marginBottom: 2 }}
-            >
-              <InputLabel htmlFor="outlined-adornment-password">
-                Password
-              </InputLabel>
-              <OutlinedInput
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      disableRipple
-                      aria-label="toggle password visibility"
-                      onClick={visiblePassword}
-                      edge="end"
-                    >
-                      {showPassword ? (
-                        <AiOutlineEye />
-                      ) : (
-                        <AiOutlineEyeInvisible />
-                      )}
-                    </IconButton>
-                  </InputAdornment>
-                }
-                label="Password"
-              />
-            </FormControl>
-          </FormControl>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            color="error"
-            size="small"
-            variant="contained"
-            onClick={() => setOpen(false)}
-          >
-            Cancel
-          </Button>
-          <Button variant="contained" size="small" autoFocus onClick={SignUp}>
-            CreateAccount
-          </Button>
-        </DialogActions>
+          </Grid>
+          <Grid item xs={6}>
+            <DialogContent>
+              <FormControl onSubmit={SignUp}>
+                <TextField
+                  aria-label="enter your email"
+                  value={email.toLocaleLowerCase()}
+                  onChange={(e) => setEmail(e.target.value)}
+                  sx={{ marginTop: 2 }}
+                  size="small"
+                  id="outlined-name"
+                  label="Email"
+                  type="email"
+                />
+                <TextField
+                  aria-label="enter your email"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  sx={{ marginTop: 2 }}
+                  size="small"
+                  id="outlined-name"
+                  label="user name"
+                />
+                <FormControl
+                  aria-label="password"
+                  variant="outlined"
+                  size="small"
+                  sx={{ marginTop: 2, marginBottom: 2 }}
+                >
+                  <InputLabel htmlFor="outlined-adornment-password">
+                    Password
+                  </InputLabel>
+                  <OutlinedInput
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    id="outlined-adornment-password"
+                    type={showPassword ? "text" : "password"}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          disableRipple
+                          aria-label="toggle password visibility"
+                          onClick={visiblePassword}
+                          edge="end"
+                        >
+                          {showPassword ? (
+                            <AiOutlineEye />
+                          ) : (
+                            <AiOutlineEyeInvisible />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                </FormControl>
+              </FormControl>
+            </DialogContent>
+            <DialogActions>
+              <Button
+                color="error"
+                size="small"
+                variant="contained"
+                onClick={() => setOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                size="small"
+                autoFocus
+                onClick={SignUp}
+              >
+                CreateAccount
+              </Button>
+            </DialogActions>
+          </Grid>
+        </Grid>
       </Dialog>
     </>
   );
