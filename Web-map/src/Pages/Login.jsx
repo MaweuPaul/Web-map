@@ -9,6 +9,7 @@ import {
 } from "../Components/Index";
 
 import useStyles from "../Components/MaterialUiStyles";
+import { padding } from "@mui/system";
 
 const Login = () => {
   const classes = useStyles();
@@ -18,9 +19,10 @@ const Login = () => {
   }, []);
 
   return (
-    <Stack className="hero">
-      <Box textAlign="center" mt={{ xs: 7, sm: 10, md: 20, lg: 30 }}>
+    <div className="hero">
+      <Box textAlign="center">
         <Typography
+          sx={{ paddingTop: { xs: 7, sm: 10, md: 20, lg: 30 } }}
           variant="h3"
           color="white"
           component={motion.div}
@@ -50,7 +52,7 @@ const Login = () => {
           </Box>
         </Box>
       </Box>
-    </Stack>
+    </div>
   );
 };
 
