@@ -11,6 +11,9 @@
   background-repeat: no-repeat;
   background-image: url("https://i.pinimg.com/564x/06/0d/34/060d348baa874f2c77301f54b4dccd64.jpg");
 }
+body {
+  background-color: #0d111f;
+}
 .Link {
   text-decoration: "none";
   color: "black";
