@@ -1,8 +1,22 @@
 import { Drawer } from "@mui/material";
-import React from "react";
-import { Link } from "react-router-dom";
+import { Box } from "@mui/system";
+import React, { useEffect } from "react";
+import { GrHome } from "react-icons/gr";
+import { Link, Outlet } from "react-router-dom";
+import { Navbar } from "../Components/Index";
+
 const Home = () => {
-  return <div className="home"></div>;
+  useEffect(() => {
+    document.title = "Webmap";
+  });
+  return (
+    <div className="home">
+      <Navbar />
+      <Box mt={20}>
+        <Outlet />
+      </Box>
+    </div>
+  );
 };
 
 export default Home;
