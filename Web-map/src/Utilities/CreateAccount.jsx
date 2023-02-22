@@ -74,7 +74,6 @@ const CreateAccount = () => {
         Create account
       </Button>
       <Dialog
-        backgroundColor="red"
         maxWidth="md"
         open={open}
         onClose={() => setOpen(false)}
