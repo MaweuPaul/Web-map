@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { Button, Icon } from "@mui/material";
-import { motion } from "framer-motion";
+import { domMax, motion } from "framer-motion";
 import { auth } from "./Auth";
 const LoginWithGoogle = () => {
   const provider = new GoogleAuthProvider();
@@ -20,6 +20,9 @@ const LoginWithGoogle = () => {
         alert(error.message);
       });
   };
+  useEffect(() => {
+    document.title = "Web map";
+  });
   return (
     <Button
       component={motion.div}
