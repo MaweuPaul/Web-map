@@ -1,4 +1,10 @@
-import { Error, LoadingSpinner, Leaflet, Footer } from "./Components/Index";
+import {
+  Error,
+  LoadingSpinner,
+  Leaflet,
+  Info,
+  Footer,
+} from "./Components/Index";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
 import React, { lazy } from "react";
@@ -30,6 +36,7 @@ function App() {
           }
         >
           {" "}
+          <Route path="info" element={<Info />} />
           <Route path="leaflet" element={<Leaflet />} />
         </Route>
 

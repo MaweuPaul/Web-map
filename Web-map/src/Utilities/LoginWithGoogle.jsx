@@ -11,7 +11,7 @@ const LoginWithGoogle = () => {
   const Google = () => {
     signInWithPopup(auth, provider)
       .then((user) => {
-        navigate("home");
+        navigate("home/info");
         const userName = user.user.displayName;
         const displayPicture = user.user.photoURL;
         console.log(user, userName, displayPicture);

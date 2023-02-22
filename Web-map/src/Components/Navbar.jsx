@@ -7,6 +7,7 @@ const Navbar = () => {
     <div>
       <AppBar>
         <Toolbar>
+          <Link to="info">About</Link>
           <Link to="leaflet"> leaflet </Link>
         </Toolbar>
       </AppBar>

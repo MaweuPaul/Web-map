@@ -8,11 +8,7 @@ import {
   CreateAccount,
 } from "../Components/Index";
 
-import useStyles from "../Components/MaterialUiStyles";
-import { padding } from "@mui/system";
-
 const Login = () => {
-  const classes = useStyles();
   // document title on mount
   useState(() => {
     document.title = "Login";
