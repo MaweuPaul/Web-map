@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect } from "react";
 import { GrHome } from "react-icons/gr";
 import { Link, Outlet } from "react-router-dom";
-import { Navbar } from "../Components/Index";
+import { Footer, Navbar } from "../Components/Index";
 
 const Home = () => {
   useEffect(() => {
@@ -12,9 +12,10 @@ const Home = () => {
   return (
     <div className="home">
       <Navbar />
-      <Box mt={20}>
+      <Box mt={10}>
         <Outlet />
       </Box>
+      <Footer />
     </div>
   );
 };
