@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
-import { Button, Icon } from "@mui/material";
+import { Button, Icon, IconButton } from "@mui/material";
 import { domMax, motion } from "framer-motion";
 import { auth } from "./Auth";
 const LoginWithGoogle = () => {
@@ -36,9 +36,9 @@ const LoginWithGoogle = () => {
       type="submit"
       onClick={Google}
     >
-      <Icon>
-        <FcGoogle size={20} />
-      </Icon>
+      <IconButton size="small">
+        <FcGoogle size={20}  />
+      </IconButton>
       Login with google
     </Button>
   );

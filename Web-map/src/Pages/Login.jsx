@@ -18,16 +18,17 @@ const Login = () => {
     <div className="hero">
       <Box textAlign="center">
         <Typography
-          sx={{ paddingTop: { xs: 7, sm: 10, md: 20, lg: 30 } }}
-          variant="h3"
+      
+          sx={{ paddingTop: { xs: 7, sm: 10, md: 18, lg: 26 } }}
+          variant="h4"
           color="white"
           component={motion.div}
           initial={{ opacity: 0.2, x: -250 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, type: "spring", stiffness: 120 }}
         >
-          Lorem ipsum dolor sit amet consectetur <br /> adipisicing elit.
-          Accusamus, minus.
+          Lorem ipsum dolor sit amet consectetur <br /> <Typography variant="h2" className="awesome">Lorem ipsum dolor sit amet.</Typography> 
+        
         </Typography>
 
         <Box

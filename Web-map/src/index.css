@@ -4,16 +4,80 @@
   padding: 0;
   box-sizing: border-box;
 }
-.hero {
-  width: 100%;
-  height: 100vh;
-  /* background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("https://www.shutterstock.com/image-illustration/gis-neon-concept-self-illumination-600w-1659981379.jpg"); */
-  background: linear-gradient(to right, #434343 0%, black 100%);
-}
-body {
+html, body {
+  height: 100%;
+}body {
   background-color: #0d111f;
+}
+.hero {
+  height: 100vh;
+  background-color:black;
+
+}
+
+
+.awesome {
+  
+
+  -webkit-animation:colorchange 20s infinite alternate;
+  
+  
+}
+
+@-webkit-keyframes colorchange {
+  0% {
+    
+    color:rgba(131,58,180,1);
+  }
+  
+  10% {
+    
+    color: rgb(115, 139, 70);
+  }
+  
+  20% {
+    
+    color:rgba(252,176,69,1);
+  }
+  
+  30% {
+    
+    color: #d35400;
+  }
+  
+  40% {
+    
+    color: rgba(253,29,29,1);
+  }
+  
+  50% {
+    
+    color: #34495e;
+  }
+  
+  60% {
+    
+    color:rgb(115, 139, 70);
+  }
+  
+  70% {
+    
+    color: #2980b9;
+  }
+  80% {
+ 
+    color: #f1c40f;
+  }
+  
+  90% {
+ 
+    color: #2980b9;
+  }
+  
+  100% {
+    
+    color:rgba(253,29,29,1);
+  }
 }
 .Link {
   text-decoration: "none";

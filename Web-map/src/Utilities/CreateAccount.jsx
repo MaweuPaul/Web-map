@@ -14,6 +14,7 @@ import {
   OutlinedInput,
   Grid,
   CardMedia,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -70,8 +71,8 @@ const CreateAccount = () => {
         onClick={() => setOpen(true)}
         variant="outlined"
       >
-        {" "}
-        Create account
+        <Typography color="white" variant="subtitle 1"> Create account</Typography>
+       
       </Button>
       <Dialog
         maxWidth="md"

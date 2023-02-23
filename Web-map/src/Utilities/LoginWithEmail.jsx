@@ -14,6 +14,7 @@ import {
   Icon,
   TextField,
   OutlinedInput,
+  Typography,
 } from "@mui/material";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { GrMail } from "react-icons/gr";
@@ -65,10 +66,10 @@ const LoginWithEmail = () => {
         variant="outlined"
         onClick={() => setOpen(true)}
       >
-        <Icon>
-          <GrMail />
-        </Icon>{" "}
-        Login with Email
+        <IconButton size="small">
+          <GrMail color="white"  />
+        </IconButton>{" "}
+     <Typography color="white" variant="subtitle 1" >Login with email</Typography>
       </Button>
       <Dialog
         maxWidth="md"
