@@ -3,7 +3,7 @@ import React from "react";
 
 const Info = () => {
   return (
-    <div>
+    <div style={{ marginTop: 4 }}>
       <Typography color="white">Hell there iam info</Typography>
     </div>
   );
