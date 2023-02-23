@@ -46,9 +46,11 @@ const LoginWithEmail = () => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((user) => {
-        navigate("home");
+        navigate("home/info");
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>

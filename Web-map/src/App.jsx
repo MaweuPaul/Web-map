@@ -1,4 +1,11 @@
-import { Error, LoadingSpinner } from "./Components/Index";
+import {
+  Error,
+  LoadingSpinner,
+  Leaflet,
+  Info,
+  Footer,
+  Layers,
+} from "./Components/Index";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
 import React, { lazy } from "react";
@@ -12,21 +19,29 @@ function App() {
     <Box className="App">
       <Routes>
         <Route
-          index
+          exact
+          path="/"
           element={
             <React.Suspense fallback={<LoadingSpinner />}>
               <Login />
             </React.Suspense>
           }
         />
+
         <Route
-          path="/home"
+          path="Home"
           element={
             <React.Suspense fallback={<LoadingSpinner />}>
               <Home />
             </React.Suspense>
           }
-        />
+        >
+          {" "}
+          <Route path="info" element={<Info />} />
+          <Route path="leaflet" element={<Leaflet />} />
+          <Route path="layers" element={<Layers />} />
+        </Route>
+
         <Route
           path="/signup"
           element={
@@ -35,6 +50,7 @@ function App() {
             </React.Suspense>
           }
         />
+
         <Route path="*" element={<Error />} />
       </Routes>
     </Box>
