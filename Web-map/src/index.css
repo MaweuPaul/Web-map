@@ -7,9 +7,10 @@
 .hero {
   width: 100%;
   height: 100vh;
-  background-size: cover;
+  /* background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("https://i.pinimg.com/564x/06/0d/34/060d348baa874f2c77301f54b4dccd64.jpg");
+  background-image: url("https://www.shutterstock.com/image-illustration/gis-neon-concept-self-illumination-600w-1659981379.jpg"); */
+  background: linear-gradient(to right, #434343 0%, black 100%);
 }
 body {
   background-color: #0d111f;
@@ -20,4 +21,15 @@ body {
 }
 .home {
   background: #0d111f !important ;
+}
+
+.navbar {
+  color: #0d111f;
+}
+.FooterItem {
+  color: rgb(55, 149, 161);
+  text-decoration: none;
+}
+.FooterItem:hover {
+  color: rgb(115, 139, 70);
 }
