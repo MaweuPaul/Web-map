@@ -11,3 +11,4 @@ export { default as Info } from "../Pages/Info";
 export { default as Leaflet } from "../Pages/Leaflet";
 export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
+export { default as Layers } from "../Pages/Layers";

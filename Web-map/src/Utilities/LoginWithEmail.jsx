@@ -48,7 +48,9 @@ const LoginWithEmail = () => {
       .then((user) => {
         navigate("home/info");
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>

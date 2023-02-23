@@ -4,6 +4,7 @@ import {
   Leaflet,
   Info,
   Footer,
+  Layers,
 } from "./Components/Index";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
@@ -38,6 +39,7 @@ function App() {
           {" "}
           <Route path="info" element={<Info />} />
           <Route path="leaflet" element={<Leaflet />} />
+          <Route path="layers" element={<Layers />} />
         </Route>
 
         <Route
@@ -51,7 +53,6 @@ function App() {
 
         <Route path="*" element={<Error />} />
       </Routes>
-      <Footer />
     </Box>
   );
 }
