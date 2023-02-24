@@ -1,21 +1,28 @@
 import React from "react";
-import { AppBar, Toolbar, Typography } from "@mui/material";
-import { FcHome } from "react-icons/fc";
+import { AppBar, CardMedia, Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import Logo from "../Images/logo.png";
+import { Box } from "@mui/system";
 const Navbar = () => {
   return (
     <div>
-      <AppBar>
+      <AppBar
+        sx={{ backgroundColor: " rgb(23, 126, 186);", position: "fixed" }}
+      >
         <Toolbar>
+          <img
+            src={Logo}
+            alt="company logo"
+            style={{ width: 50, height: 50, borderRadius: 50 }}
+          />
+
           <Typography className="navbar">
             <NavLink to="info">About</NavLink>
           </Typography>
           <Typography className="navbar">
-            {" "}
             <NavLink to="leaflet"> leaflet </NavLink>
           </Typography>
           <Typography className="navbar">
-            {" "}
             <NavLink to="layers"> layers </NavLink>
           </Typography>
         </Toolbar>

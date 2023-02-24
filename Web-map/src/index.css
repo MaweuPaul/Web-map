@@ -6,8 +6,11 @@
 }
 html, body {
   height: 100%;
-}body {
-  background-color: #0d111f;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #242648;
 }
 .hero {
   height: 100vh;
@@ -83,9 +86,7 @@ html, body {
   text-decoration: "none";
   color: "black";
 }
-.home {
-  background: #0d111f !important ;
-}
+
 
 .navbar {
   color: #0d111f;
@@ -96,4 +97,12 @@ html, body {
 }
 .FooterItem:hover {
   color: rgb(115, 139, 70);
+}
+
+.footer{
+  
+  width: 100%;
+  bottom: 0rem;
+  position: absolute;
+
 }

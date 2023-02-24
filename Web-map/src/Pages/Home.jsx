@@ -10,7 +10,7 @@ const Home = () => {
     document.title = "Webmap";
   });
   return (
-    <div className="home">
+    <div>
       <Navbar />
       <Box mt={10}>
         <Outlet />

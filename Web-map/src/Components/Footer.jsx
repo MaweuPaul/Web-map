@@ -5,7 +5,7 @@ import { GrLocationPin, GrMail, GrPhoneFlip } from "react-icons/gr";
 import { MdWifiCalling3 } from "react-icons/md";
 const Footer = () => {
   return (
-    <div>
+    <div className="footer">
       <Box sx={{ background: "#000000", bottom: 0 }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={6} display="block">
@@ -33,9 +33,6 @@ const Footer = () => {
                 </Typography>
               </ListItem>
             </List>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography>hello</Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography>hello</Typography>
