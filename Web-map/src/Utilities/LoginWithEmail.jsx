@@ -9,9 +9,7 @@ import {
   InputAdornment,
   IconButton,
   Button,
-  Input,
   Slide,
-  Icon,
   TextField,
   OutlinedInput,
   Typography,
@@ -19,7 +17,7 @@ import {
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { GrMail } from "react-icons/gr";
 import { motion } from "framer-motion";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./Auth";
 
 import { useNavigate } from "react-router-dom";
@@ -67,9 +65,11 @@ const LoginWithEmail = () => {
         onClick={() => setOpen(true)}
       >
         <IconButton size="small">
-          <GrMail color="white"  />
+          <GrMail color="white" />
         </IconButton>{" "}
-     <Typography color="white" variant="subtitle 1" >Login with email</Typography>
+        <Typography color="white" variant="subtitle 1">
+          Login with email
+        </Typography>
       </Button>
       <Dialog
         maxWidth="md"

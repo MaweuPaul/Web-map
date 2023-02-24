@@ -1,44 +1,87 @@
-import { Grid, IconButton, List, ListItem, Typography } from "@mui/material";
+import { Grid, IconButton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { GrLocationPin, GrMail, GrPhoneFlip } from "react-icons/gr";
-import { MdWifiCalling3 } from "react-icons/md";
+import {
+  BsTwitter,
+  BsTelegram,
+  BsInstagram,
+  BsYoutube,
+  BsMap,
+} from "react-icons/bs";
+
 const Footer = () => {
   return (
-    <div>
-      <Box sx={{ background: "#000000", bottom: 0 }}>
-        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={6} display="block">
-            <List>
-              <ListItem>
-                <Typography variant="h5">
-                  <GrLocationPin color="red" />
+    <div className="footer">
+      <Box
+        sx={{ background: "#000000", width: "100%", marginBottom: 0 }}
+        paddingTop={7}
+      >
+        <Grid container>
+          <Grid item xs={12} md={6} lg={6} display="block">
+            <div className="footerLeft">
+              <Typography
+                variant="h5"
+                textAlign="center"
+                sx={{ borderBottom: "1px solid rgb(55, 149, 161)" }}
+              >
+                About us
+              </Typography>
+              <Typography>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel
+                corrupti non dolor! Nemo culpa dolore minima. Aut error dolor
+                sapiente!
+              </Typography>
+
+              {/* start icon contacts */}
+              <Box paddingTop={3}>
+                <IconButton>
+                  <a href="" target="_blank">
+                    <BsTwitter color="#1D9BF0" />
+                  </a>
+                </IconButton>
+                <IconButton>
+                  <a href="" target="_blank">
+                    <BsInstagram className="instagram-logo" />
+                  </a>
+                </IconButton>
+                <IconButton>
+                  <a href="" target="_blank">
+                    <BsTelegram color="#0088cc" />
+                  </a>
+                </IconButton>
+                <IconButton>
                   <a
-                    className="FooterItem"
-                    href="https://goo.gl/maps/WicZepEzZ6ZQiM1u9"
+                    href="https://www.youtube.com/watch?v=J1gzN1SAhyM"
                     target="_blank"
-                  ></a>
-                </Typography>
-                <Typography color="white" variant="h5">
-                  <a href="mailto:" className="FooterItem">
-                    <GrMail />
-                    mail us
+                  >
+                    <BsYoutube color="red" />
                   </a>
-                </Typography>
-                <Typography color="white" variant="h5">
-                  <a href="tel:07273278" className="FooterItem">
-                    <MdWifiCalling3 />
-                    call
-                  </a>
-                </Typography>
-              </ListItem>
-            </List>
+                </IconButton>
+              </Box>
+            </div>
           </Grid>
-          <Grid item xs={6}>
-            <Typography>hello</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography>hello</Typography>
+
+          <Grid item xs={12} md={6} lg={6} display="block">
+            <div className="footerRight">
+              <Typography
+                variant="h5"
+                textAlign="center"
+                sx={{ borderBottom: "1px solid rgb(55, 149, 161)" }}
+              >
+                Contact us
+              </Typography>
+              <Box>
+                <a href="">
+                  <Typography> Dedan kimathi , Nyeri</Typography>
+                </a>
+                <a href="tel:07162882817">
+                  <Typography>0716288187</Typography>
+                </a>
+                <a href="mailto:geomappers@gmail.com">
+                  <Typography>geomappers@gmail.com</Typography>
+                </a>
+              </Box>
+            </div>
           </Grid>
         </Grid>
       </Box>
