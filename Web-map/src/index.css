@@ -1,4 +1,4 @@
-/*  only used to style non-material ui themes */
+
 * {
   margin: 0;
   padding: 0;
@@ -146,9 +146,4 @@ color: rgb(115, 139, 70);
 }
 .footerContacts{
   display: flex;
-}
-@media (max-width:300px){
-  .footer{
-    margin-top: 10rem;
-  }
 }
