@@ -8,6 +8,7 @@ html, body {
   height: 100%;
 }
 body {
+flex-wrap: nowrap;
   display: flex;
   flex-direction: column;
   color: #ffffff;
@@ -17,8 +18,13 @@ body {
   background-color:black;
 
 }
-
-
+.footer a{
+  text-decoration: none;
+  color: white;
+}
+.footer a:hover{
+  color: rgb(77, 159, 139);
+}
 .awesome {
   
 
@@ -83,26 +89,53 @@ body {
   }
 }
 .Link {
-  text-decoration: "none";
-  color: "black";
+  text-decoration: none;
+  color: rgb(55, 149, 161)
 }
-
-
-.navbar {
-  color:#ffffff;
+.Link:hover{
+color: rgb(115, 139, 70);
 }
-.FooterItem {
-  color: rgb(55, 149, 161);
+.navbarItems{
+  display: flex;
+}
+.navbarItems .active{
+  border-bottom:2px solid rgb(55, 161, 108);
+}
+.navbarItem{
+  color:black;
+  margin: 2rem;
   text-decoration: none;
 }
-.FooterItem:hover {
-  color: rgb(115, 139, 70);
+.navbarItem:hover{
+  color:rgb(55, 149, 161)
 }
 
+.instagram-logo{
+  background: #f09433; 
+  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.footerLeft{
+  padding: 0  1rem;
+}
+.footerRight{
+  padding:0 1rem;
+  border-left: solid 1px rgb(55, 149, 161);
+}
 .footer{
-  
+  bottom: 0;
   width: 100%;
-  bottom: 0rem;
   position: absolute;
+  
 
+}
+.footerContacts{
+  display: flex;
+}
+@media (max-width:300px){
+  .footer{
+    margin-top: 10rem;
+  }
 }
