@@ -1,8 +1,17 @@
 import React from "react";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  useTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Images/logo.png";
+import NavbarDrawer from "./NavbarDrawer";
 const Navbar = () => {
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <div className="navbar">
       <AppBar sx={{ backgroundColor: "transparent", position: "fixed" }}>
@@ -14,26 +23,29 @@ const Navbar = () => {
               style={{ width: 50, height: 50, borderRadius: 50 }}
             />
           </Link>
-
-          <div className="navbarItems">
-            <Typography>
-              <NavLink to="info" className="navbarItem">
-                About
-              </NavLink>
-            </Typography>
-            <Typography>
-              <NavLink to="leaflet" className="navbarItem">
-                {" "}
-                leaflet{" "}
-              </NavLink>
-            </Typography>
-            <Typography>
-              <NavLink to="layers" className="navbarItem">
-                {" "}
-                layers{" "}
-              </NavLink>
-            </Typography>
-          </div>
+          {isMatch ? (
+            <NavbarDrawer />
+          ) : (
+            <div className="navbarItems">
+              <Typography>
+                <NavLink to="info" className="navbarItem">
+                  About
+                </NavLink>
+              </Typography>
+              <Typography>
+                <NavLink to="leaflet" className="navbarItem">
+                  {" "}
+                  leaflet{" "}
+                </NavLink>
+              </Typography>
+              <Typography>
+                <NavLink to="layers" className="navbarItem">
+                  {" "}
+                  layers{" "}
+                </NavLink>
+              </Typography>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
     </div>
