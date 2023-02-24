@@ -6,8 +6,7 @@ const Layers = () => {
     document.title = "layers";
   });
   return (
-    <Typography color="white" variant="h1">
-      {" "}
+    <Typography color="#293745" variant="h5">
       iam layers
     </Typography>
   );

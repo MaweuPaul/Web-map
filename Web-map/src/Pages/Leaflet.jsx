@@ -5,7 +5,7 @@ const Leaflet = () => {
   useEffect(() => {
     document.title = "leaflet";
   });
-  return <Typography color="white"> hello iam leaflet</Typography>;
+  return <Typography color="#293745"> hello iam leaflet</Typography>;
 };
 
 export default Leaflet;

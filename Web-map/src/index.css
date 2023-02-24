@@ -10,7 +10,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  background-color: #242648;
+  color: #ffffff;
 }
 .hero {
   height: 100vh;
@@ -89,7 +89,7 @@ body {
 
 
 .navbar {
-  color: #0d111f;
+  color:#ffffff;
 }
 .FooterItem {
   color: rgb(55, 149, 161);

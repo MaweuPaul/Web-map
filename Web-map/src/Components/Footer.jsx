@@ -34,9 +34,6 @@ const Footer = () => {
               </ListItem>
             </List>
           </Grid>
-          <Grid item xs={6}>
-            <Typography>hello</Typography>
-          </Grid>
         </Grid>
       </Box>
     </div>

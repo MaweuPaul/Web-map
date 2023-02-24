@@ -6,9 +6,7 @@ import { Box } from "@mui/system";
 const Navbar = () => {
   return (
     <div>
-      <AppBar
-        sx={{ backgroundColor: " rgb(23, 126, 186);", position: "fixed" }}
-      >
+      <AppBar sx={{ backgroundColor: "transparent", position: "fixed" }}>
         <Toolbar>
           <img
             src={Logo}
