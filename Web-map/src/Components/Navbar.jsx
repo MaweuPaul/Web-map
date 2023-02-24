@@ -1,28 +1,39 @@
 import React from "react";
-import { AppBar, CardMedia, Toolbar, Typography } from "@mui/material";
-import { NavLink } from "react-router-dom";
+import { AppBar, Toolbar, Typography } from "@mui/material";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "../Images/logo.png";
-import { Box } from "@mui/system";
 const Navbar = () => {
   return (
-    <div>
+    <div className="navbar">
       <AppBar sx={{ backgroundColor: "transparent", position: "fixed" }}>
         <Toolbar>
-          <img
-            src={Logo}
-            alt="company logo"
-            style={{ width: 50, height: 50, borderRadius: 50 }}
-          />
+          <Link to="info">
+            <img
+              src={Logo}
+              alt="company logo"
+              style={{ width: 50, height: 50, borderRadius: 50 }}
+            />
+          </Link>
 
-          <Typography className="navbar">
-            <NavLink to="info">About</NavLink>
-          </Typography>
-          <Typography className="navbar">
-            <NavLink to="leaflet"> leaflet </NavLink>
-          </Typography>
-          <Typography className="navbar">
-            <NavLink to="layers"> layers </NavLink>
-          </Typography>
+          <div className="navbarItems">
+            <Typography>
+              <NavLink to="info" className="navbarItem">
+                About
+              </NavLink>
+            </Typography>
+            <Typography>
+              <NavLink to="leaflet" className="navbarItem">
+                {" "}
+                leaflet{" "}
+              </NavLink>
+            </Typography>
+            <Typography>
+              <NavLink to="layers" className="navbarItem">
+                {" "}
+                layers{" "}
+              </NavLink>
+            </Typography>
+          </div>
         </Toolbar>
       </AppBar>
     </div>
