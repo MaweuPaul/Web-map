@@ -17,10 +17,10 @@ const Error = () => {
   return (
     <Box>
       <Lottie options={defaultOptions} height={400} width={400} />
-      <Typography variant="h6" textAlign="center" color="white">
-        Web map couldn't load your request
+      <Typography variant="h6" textAlign="center" color="black">
+        Web map couldn't load your request {""}
         <Link className="Link" to="/">
-          Back home{" "}
+          Back home
         </Link>
       </Typography>
     </Box>
