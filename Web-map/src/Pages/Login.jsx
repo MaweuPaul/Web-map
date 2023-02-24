@@ -16,19 +16,24 @@ const Login = () => {
 
   return (
     <div className="hero">
-      <Box textAlign="center">
+      <Box
+        textAlign="center"
+        sx={{
+          paddingTop: { xs: 7, sm: 10, md: 18, lg: 20 },
+        }}
+      >
         <Typography
-          sx={{ paddingTop: { xs: 7, sm: 10, md: 18, lg: 26 } }}
-          variant="h4"
+          fontWeight={600}
+          variant="h1"
           color="white"
           component={motion.div}
           initial={{ opacity: 0.2, x: -250 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, type: "spring", stiffness: 120 }}
         >
-          Lorem ipsum dolor sit amet consectetur <br />{" "}
-          <Typography variant="h2" className="awesome">
-            Lorem ipsum dolor sit amet.
+          Welcome to
+          <Typography fontWeight={400} variant="h1" className="awesome">
+            Geomappers
           </Typography>
         </Typography>
 
