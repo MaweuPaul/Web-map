@@ -13,6 +13,7 @@ import {
   TextField,
   OutlinedInput,
   Typography,
+  Alert,
 } from "@mui/material";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { GrMail } from "react-icons/gr";
@@ -32,24 +33,25 @@ const LoginWithEmail = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [emailError, setEmailError] = useState("");
 
   // to show password onClick
   const visiblePassword = () => {
     setShowPassword(!showPassword);
   };
-
-  // to handle
+  if (auth) {
+  }
   const navigate = useNavigate();
   const login = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((user) => {
-        navigate("home/info");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    if (auth) {
+      e.preventDefault();
+      signInWithEmailAndPassword(auth, email, password)
+        .then((user) => {
+          navigate("home/info");
+        })
+        .catch((error) => {
+          setError("no account associated with the userName");
+        });
+    }
   };
   return (
     <>
@@ -81,6 +83,11 @@ const LoginWithEmail = () => {
         aria-describedby="dialog-description"
       >
         <DialogTitle id="dialog-title">Login with Email</DialogTitle>
+        {error && (
+          <Alert variant="outlined" severity="error">
+            {error}
+          </Alert>
+        )}
         <DialogContent>
           <FormControl>
             <TextField
