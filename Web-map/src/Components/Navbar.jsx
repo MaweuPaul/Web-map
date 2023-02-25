@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   AppBar,
   Toolbar,
@@ -9,6 +10,8 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Images/logo.png";
 import NavbarDrawer from "./NavbarDrawer";
+import SignOut from "../Utilities/SignOut";
+import { Box } from "@mui/system";
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
@@ -26,7 +29,7 @@ const Navbar = () => {
           {isMatch ? (
             <NavbarDrawer />
           ) : (
-            <div className="navbarItems">
+            <div className="navbarItems" style={{ marginLeft: "auto" }}>
               <Typography>
                 <NavLink to="info" className="navbarItem">
                   About
@@ -34,16 +37,19 @@ const Navbar = () => {
               </Typography>
               <Typography>
                 <NavLink to="leaflet" className="navbarItem">
-                  {" "}
-                  leaflet{" "}
+                  leaflet
                 </NavLink>
               </Typography>
               <Typography>
                 <NavLink to="layers" className="navbarItem">
-                  {" "}
-                  layers{" "}
+                  layers
                 </NavLink>
               </Typography>
+
+              <Box sx={{}}>
+                <Typography color="green">signed in as{}</Typography>
+              </Box>
+              <SignOut />
             </div>
           )}
         </Toolbar>
