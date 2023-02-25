@@ -1,11 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
-import { Button, Icon, IconButton } from "@mui/material";
-import { domMax, motion } from "framer-motion";
+import { Alert, Button, Icon, IconButton } from "@mui/material";
+import { motion } from "framer-motion";
 import { auth } from "./Auth";
 const LoginWithGoogle = () => {
+  const [error, setError] = useState("");
   const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const Google = () => {
@@ -17,7 +18,9 @@ const LoginWithGoogle = () => {
         console.log(user, userName, displayPicture);
       })
       .catch((error) => {
-        alert(error.message);
+        setError(
+          <Alert severity="warning">{`${error}couldnt sign You in.Try again later`}</Alert>
+        );
       });
   };
   useEffect(() => {
@@ -37,7 +40,7 @@ const LoginWithGoogle = () => {
       onClick={Google}
     >
       <IconButton size="small">
-        <FcGoogle size={20}  />
+        <FcGoogle size={20} />
       </IconButton>
       Login with google
     </Button>
