@@ -7,7 +7,7 @@ const Info = () => {
     <div style={{ marginTop: 4 }} className="main">
       <Box
         textAlign="center"
-        sx={{ marginTop: { xm: 10, sm: 15, md: 20, lg: 30 } }}
+        sx={{ marginTop: { xm: 10, sm: 15, md: 20, lg: 25 } }}
       >
         <Typography
           color="#293745"

@@ -12,16 +12,21 @@ import {
 import { AiOutlineMenu } from "react-icons/ai";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Images/logo.png";
+import SignOut from "../Utilities/SignOut";
 const NavbarDrawer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-
   return (
     <div>
-      <Drawer open={openDrawer} onClose={() => setOpenDrawer(false)}>
+      <Drawer
+        hideBackdrop={true}
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        anchor="right"
+      >
         <List>
           <ListItemButton>
             <ListItemIcon>
-              <ListItemText disableTypography>
+              <ListItemText>
                 <div
                   className="navbarItemsDrawerMain"
                   onClick={() => setOpenDrawer(false)}
@@ -33,32 +38,32 @@ const NavbarDrawer = () => {
                       style={{ width: 50, height: 50, borderRadius: 50 }}
                     />
                   </Link>
-                  <Typography>
+                  <Typography padding={1}>
                     <NavLink to="info" className="navbarItemDrawer">
                       About
                     </NavLink>
                   </Typography>
-                  <Typography>
+                  <Typography padding={1}>
                     <NavLink to="leaflet" className="navbarItemDrawer">
                       {" "}
                       leaflet{" "}
                     </NavLink>
                   </Typography>
-                  <Typography>
+                  <Typography padding={1}>
                     <NavLink to="layers" className="navbarItemDrawer">
-                      {" "}
-                      layers{" "}
+                      layers
                     </NavLink>
                   </Typography>
                 </div>
-                <Button variant="contained"> log out</Button>
+                <SignOut />
               </ListItemText>
             </ListItemIcon>
           </ListItemButton>
         </List>
       </Drawer>
       <IconButton
-        sx={{ marginLeft: "auto" }}
+        edge="end"
+        sx={{ right: 10, position: "absolute", bottom: "50%", top: "50%" }}
         onClick={() => setOpenDrawer(true)}
       >
         <AiOutlineMenu />

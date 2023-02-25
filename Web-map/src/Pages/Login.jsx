@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
 import {
@@ -19,10 +19,11 @@ const Login = () => {
       <Box
         textAlign="center"
         sx={{
-          paddingTop: { xs: 7, sm: 10, md: 18, lg: 20 },
+          paddingTop: { xs: 15, sm: 18, md: 19, lg: 21 },
         }}
       >
         <Typography
+          sx={{ fontSize: { xs: 45, sm: 50, md: 60, lg: 70 } }}
           fontWeight={600}
           variant="h1"
           color="white"
@@ -32,7 +33,12 @@ const Login = () => {
           transition={{ duration: 0.4, type: "spring", stiffness: 120 }}
         >
           Welcome to
-          <Typography fontWeight={400} variant="h1" className="awesome">
+          <Typography
+            sx={{ fontSize: { xs: 49, sm: 55, md: 65, lg: 75 } }}
+            fontWeight={400}
+            variant="h1"
+            className="awesome"
+          >
             Geomappers
           </Typography>
         </Typography>
