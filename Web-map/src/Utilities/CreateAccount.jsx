@@ -15,6 +15,7 @@ import {
   Grid,
   CardMedia,
   Typography,
+  Alert,
 } from "@mui/material";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
@@ -22,7 +23,6 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { auth } from "./Auth";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Signup } from "../Components/Index";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -33,30 +33,34 @@ const CreateAccount = () => {
   const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [successSignup, setSuccessSignup] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   // to show password onClick
   const visiblePassword = () => {
     setShowPassword(!showPassword);
   };
 
   // to handle create account logic
-  const navigate = useNavigate();
-  const SignUp = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((user) => {
-        navigate("/");
-        setEmail("");
-        setPassword("");
-      })
+  async function SignUp(e) {
+    if (password !== confirmPassword) {
+      return setError(`Passwords do not match`);
+    }
 
+    e.preventDefault();
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((user) => {
+        setError("");
+        setLoading(true);
+        setSuccessSignup("signup successful,now close the window and login");
+      })
       .catch((error) => {
-        setEmail("");
-        setPassword("");
-        setError(error.message);
+        setError("failed to create an account");
       });
-  };
+    setLoading(false);
+  }
   return (
     <>
       {" "}
@@ -71,8 +75,10 @@ const CreateAccount = () => {
         onClick={() => setOpen(true)}
         variant="outlined"
       >
-        <Typography color="white" variant="subtitle 1"> Create account</Typography>
-       
+        <Typography color="white" variant="subtitle 1">
+          {" "}
+          Create account
+        </Typography>
       </Button>
       <Dialog
         maxWidth="md"
@@ -84,12 +90,10 @@ const CreateAccount = () => {
         aria-describedby="dialog-description"
       >
         <DialogTitle align="center" variant="h5">
-          {" "}
           Sign Up
         </DialogTitle>
-
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={6}>
+          <Grid item xs={0} sm={0} md={6}>
             <img
               width={400}
               className="loginImage"
@@ -97,8 +101,13 @@ const CreateAccount = () => {
               alt=""
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={12} md={6}>
             <DialogContent>
+              {error ? (
+                <Alert severity="error">{error}</Alert>
+              ) : (
+                <Alert>{successSignup}</Alert>
+              )}
               <FormControl onSubmit={SignUp}>
                 <TextField
                   aria-label="enter your email"
@@ -111,6 +120,7 @@ const CreateAccount = () => {
                   type="email"
                 />
                 <TextField
+                  sx={{ width: { xs: "100%", sm: "100%" } }}
                   aria-label="enter your email"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
@@ -152,6 +162,40 @@ const CreateAccount = () => {
                     label="Password"
                   />
                 </FormControl>
+                {/* password confirmation */}
+                <FormControl
+                  aria-label="password"
+                  variant="outlined"
+                  size="small"
+                  sx={{ marginTop: 2, marginBottom: 2 }}
+                >
+                  <InputLabel htmlFor="outlined-adornment-password">
+                    confirmPassword
+                  </InputLabel>
+                  <OutlinedInput
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    id="outlined-adornment-password"
+                    type={showPassword ? "text" : "confirmPassword"}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          disableRipple
+                          aria-label="toggle password visibility"
+                          onClick={visiblePassword}
+                          edge="end"
+                        >
+                          {showPassword ? (
+                            <AiOutlineEye />
+                          ) : (
+                            <AiOutlineEyeInvisible />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    label="Password"
+                  />
+                </FormControl>
               </FormControl>
             </DialogContent>
             <DialogActions>
@@ -163,11 +207,13 @@ const CreateAccount = () => {
               >
                 Cancel
               </Button>
+
               <Button
                 variant="contained"
                 size="small"
                 autoFocus
                 onClick={SignUp}
+                disabled={loading}
               >
                 CreateAccount
               </Button>
