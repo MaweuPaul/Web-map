@@ -1,163 +1,176 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html, body {
+html,
+body {
   height: 100%;
 }
 body {
-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   display: flex;
   flex-direction: column;
   color: #ffffff;
 }
-
+.LoginText {
+  font-size: clamp(16px, 36px);
+}
 .hero {
   height: 100vh;
-  background-color:black;
-
+  background-color: black;
 }
-.footer a{
+.footer a {
   text-decoration: none;
   color: white;
 }
-.footer a:hover{
+.footer a:hover {
   color: rgb(77, 159, 139);
 }
 .awesome {
-  
-
-  -webkit-animation:colorchange 20s infinite alternate;
-  
-  
+  -webkit-animation: colorchange 20s infinite alternate;
 }
 
 @-webkit-keyframes colorchange {
   0% {
-    
-    color:rgba(131,58,180,1);
+    color: rgba(131, 58, 180, 1);
   }
-  
+
   10% {
-    
     color: rgb(115, 139, 70);
   }
-  
+
   20% {
-    
-    color:rgba(252,176,69,1);
+    color: rgba(252, 176, 69, 1);
   }
-  
+
   30% {
-    
     color: #d35400;
   }
-  
+
   40% {
-    
-    color: rgba(253,29,29,1);
+    color: rgba(253, 29, 29, 1);
   }
-  
+
   50% {
-    
     color: #34495e;
   }
-  
+
   60% {
-    
-    color:rgb(115, 139, 70);
+    color: rgb(115, 139, 70);
   }
-  
+
   70% {
-    
     color: #2980b9;
   }
   80% {
- 
     color: #f1c40f;
   }
-  
+
   90% {
- 
     color: #2980b9;
   }
-  
+
   100% {
-    
-    color:rgba(253,29,29,1);
+    color: rgba(253, 29, 29, 1);
   }
 }
 .Link {
   text-decoration: none;
-  color: rgb(55, 149, 161)
+  color: rgb(55, 149, 161);
 }
-.Link:hover{
-color: rgb(115, 139, 70);
+.Link:hover {
+  color: rgb(115, 139, 70);
 }
-.navbarItems{
+.navbarItems {
   display: flex;
 }
-.navbarItems .active{
-  border-bottom:2px solid rgb(55, 161, 108);
+.navbarItems .active {
+  border-bottom: 2px solid rgb(55, 161, 108);
 }
-.navbarItem{
-  color:black;
+.navbarItem {
+  color: black;
   margin: 2rem;
   text-decoration: none;
 }
-.navbarItem:hover{
-  color:rgb(55, 149, 161)
+.navbarItem:hover {
+  color: rgb(55, 149, 161);
 }
-.navbarItemDrawer{
-  color:black;
+.navbarItemDrawer {
+  color: black;
   font-size: 1.6rem;
   margin-top: 2rem;
   text-decoration: none;
-
 }
-.navbarItemDrawer:hover{
-  color:rgb(55, 149, 161)
+.navbarItemDrawer:hover {
+  color: rgb(55, 149, 161);
 }
-.navbarItemDrawerMain .active{
-  border-bottom:2px solid rgb(55, 161, 108);
-
+.navbarItemDrawerMain .active {
+  border-bottom: 2px solid rgb(55, 161, 108);
 }
 .navbarItemDrawerMain {
   padding: 2rem;
 }
-.instagram-logo{
-  background: #f09433; 
-  background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-  background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+.instagram-logo {
+  background: #f09433;
+  background: -moz-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: -webkit-linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
 }
 
-.footer{
+.footer {
   bottom: 0;
   width: 100%;
   position: absolute;
 }
-.footerLeft{
-  padding: 0  1rem;
+.footerLeft {
+  padding: 0 1rem;
 }
-.footerRight{
-  padding:0 1rem;
+.footerRight {
+  padding: 0 1rem;
   border-left: solid 1px rgb(55, 149, 161);
 }
-.footerContacts{
+.footerContacts {
   display: flex;
 }
+
+.footer {
+  margin-top: auto;
+  width: 100%;
+  height: 50px;
+  background-color: #ccc;
+}
+
 @media (max-width: 400px) {
-  .loginImage{
- display: none
+  .loginImage {
+    display: none;
   }
 }
 @media (max-width: 894px) {
-  .loginImage{
- display: none;
- padding-top:10rem
+  .loginImage {
+    display: none;
+    padding-top: 10rem;
   }
 }
