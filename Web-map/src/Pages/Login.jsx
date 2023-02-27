@@ -7,6 +7,7 @@ import {
   LoginWithGoogle,
   CreateAccount,
 } from "../Components/Index";
+import ResetPassword from "../Utilities/ResetPassword";
 
 const Login = () => {
   // document title on mount
@@ -32,14 +33,14 @@ const Login = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, type: "spring", stiffness: 120 }}
         >
-          Welcome to
+          <span className="LoginText">Welcome to</span>
           <Typography
             sx={{ fontSize: { xs: 49, sm: 55, md: 65, lg: 75 } }}
             fontWeight={400}
             variant="h1"
             className="awesome"
           >
-            Geomappers
+            <span className="LoginText">GEOMAPPERS</span>
           </Typography>
         </Typography>
 
@@ -55,9 +56,15 @@ const Login = () => {
           <Box mt={2}>
             <LoginWithEmail />
           </Box>
-          <Typography color="white"> or</Typography>
+          <Typography color="white">
+            <span className="LoginOr">or</span>
+          </Typography>
           <Box>
             <CreateAccount />
+          </Box>
+          <Box>
+            <Typography>or</Typography>
+            <ResetPassword />
           </Box>
         </Box>
       </Box>
