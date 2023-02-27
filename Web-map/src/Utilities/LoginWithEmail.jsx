@@ -69,7 +69,7 @@ const LoginWithEmail = () => {
         <IconButton size="small">
           <GrMail color="white" />
         </IconButton>{" "}
-        <Typography color="white" variant="subtitle 1">
+        <Typography color="white" variant="subtitle 1" fontSize={12}>
           Login with email
         </Typography>
       </Button>
