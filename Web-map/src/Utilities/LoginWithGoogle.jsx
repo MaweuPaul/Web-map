@@ -28,6 +28,7 @@ const LoginWithGoogle = () => {
   });
   return (
     <Button
+      sx={{ fontSize: 12 }}
       component={motion.div}
       whileHover={{
         scale: 1.1,
