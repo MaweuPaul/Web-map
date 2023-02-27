@@ -176,7 +176,7 @@ const CreateAccount = () => {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     id="outlined-adornment-password"
-                    type={showPassword ? "text" : "confirmPassword"}
+                    type={showPassword ? "text" : "Password"}
                     endAdornment={
                       <InputAdornment position="end">
                         <IconButton
