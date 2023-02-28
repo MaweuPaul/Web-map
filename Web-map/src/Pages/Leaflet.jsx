@@ -41,36 +41,26 @@ export default function LeafletMap() {
 
   return (
     <div>
-      <MapContainer
-        center={center}
-        zoom={10}
-        style={{
-          width: "80vw",
-          height: "75vh",
-          paddingLeft: "4rem",
-          marginLeft: "10rem",
-        }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-
-        <button
-          onClick={() => {
-            map.locate();
-          }}
-          style={{
-            position: "absolute",
-            top: "80px",
-            left: "10px",
-            zIndex: "1000",
-          }}
-        >
-          Find my location
-        </button>
-
+      <MapContainer center={center} zoom={10} className="mapContainer">
         <LayersControl position="topright">
+          <LayersControl.BaseLayer name="Map">
+            <TileLayer
+              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+              url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=XWgwvgf8UQRZ99UI0PR1"
+            />
+          </LayersControl.BaseLayer>
+          <LayersControl.BaseLayer name="Satellite">
+            <TileLayer
+              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>'
+              url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=XWgwvgf8UQRZ99UI0PR1"
+            />{" "}
+          </LayersControl.BaseLayer>
+          <LayersControl.BaseLayer name="Streets">
+            <TileLayer
+              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>'
+              url="https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}@2x.png?key=XWgwvgf8UQRZ99UI0PR1"
+            />{" "}
+          </LayersControl.BaseLayer>
           <LayersControl.Overlay name="Marker with popup">
             <Marker position={center}>
               <Popup>
@@ -101,6 +91,19 @@ export default function LeafletMap() {
             </LayerGroup>
           </LayersControl.Overlay>
         </LayersControl>
+        <button
+          onClick={() => {
+            map.locate();
+          }}
+          style={{
+            position: "absolute",
+            top: "80px",
+            left: "10px",
+            zIndex: "1000",
+          }}
+        >
+          Find my location
+        </button>
 
         <LocationMarker />
       </MapContainer>
