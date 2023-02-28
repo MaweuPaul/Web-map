@@ -162,6 +162,12 @@ body {
   height: 50px;
   background-color: #ccc;
 }
+.mapContainer {
+  width: 80vw;
+  height: 75vh;
+  padding-left: 4rem;
+  margin-left: 10rem;
+}
 
 @media (max-width: 400px) {
   .loginImage {
