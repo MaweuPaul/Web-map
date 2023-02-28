@@ -1,36 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
-  Circle,
-  FeatureGroup,
-  LayerGroup,
   LayersControl,
   MapContainer,
   Marker,
   Popup,
-  Rectangle,
   TileLayer,
   useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import maplibreGl from "maplibre-gl";
+import maplibregl from "maplibre-gl";
+import { GeocodingControl } from "@maptiler/geocoding-control/maplibregl";
+import "@maptiler/geocoding-control/style.css";
+import { Typography } from "@mui/material";
+import SimpleAccordion from "./Accordion";
 
 export default function LeafletMap() {
-  const center = [-0.04830583139616625, 37.83410595020698];
-  const rectangle = [
-    [51.49, -0.08],
-    [51.5, -0.06],
-  ];
+  // for location
+  const [showLocation, setShowLocation] = useState(false);
+  const Allcenter = [-0.04830583139616625, 37.83410595020698];
+  const apiKey = "XWgwvgf8UQRZ99UI0PR1";
+  useEffect(() => {
+    const map = new maplibreGl.Map({
+      container: "map",
+      style: "https://api.maptiler.com/maps/streets/style.json?key=" + apiKey,
+      center: [16.3, 49.2],
+      zoom: 7,
+    });
 
-  function LocationMarker() {
+    const gc = new GeocodingControl({ apiKey, maplibregl, zoom: 14 });
+
+    map.addControl(gc);
+
+    return () => {
+      map.remove();
+    };
+  }, []);
+
+  function LocationMarker({ showLocation }) {
     const [position, setPosition] = useState(null);
     const map = useMapEvents({
-      click() {
-        map.locate();
-      },
       locationfound(e) {
         setPosition(e.latlng);
-        map.flyTo(e.latlng, map.getZoom());
+        map.flyTo(e.latlng, 18);
       },
     });
+
+    useEffect(() => {
+      if (showLocation) {
+        map.locate();
+      }
+    }, [showLocation]);
 
     return position === null ? null : (
       <Marker position={position}>
@@ -38,15 +58,22 @@ export default function LeafletMap() {
       </Marker>
     );
   }
-
   return (
     <div>
-      <MapContainer center={center} zoom={10} className="mapContainer">
-        <LayersControl position="topright">
+      <div>
+        <SimpleAccordion />
+      </div>
+      <MapContainer
+        center={Allcenter}
+        zoom={10}
+        className="mapContainer"
+        id="map"
+      >
+        <LayersControl position="bottomright">
           <LayersControl.BaseLayer name="Map">
             <TileLayer
               attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-              url="https://api.maptiler.com/maps/basic/256/{z}/{x}/{y}.png?key=XWgwvgf8UQRZ99UI0PR1"
+              url="https://api.maptiler.com/maps/openstreetmap/style.json?key=XWgwvgf8UQRZ99UI0PR1"
             />
           </LayersControl.BaseLayer>
           <LayersControl.BaseLayer name="Satellite">
@@ -62,38 +89,17 @@ export default function LeafletMap() {
             />{" "}
           </LayersControl.BaseLayer>
           <LayersControl.Overlay name="Marker with popup">
-            <Marker position={center}>
+            <Marker position={Allcenter}>
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
               </Popup>
             </Marker>
           </LayersControl.Overlay>
-          <LayersControl.Overlay checked name="Layer group with circles">
-            <LayerGroup>
-              <Circle
-                center={center}
-                pathOptions={{ fillColor: "blue" }}
-                radius={200}
-              />
-              <Circle
-                center={center}
-                pathOptions={{ fillColor: "red" }}
-                radius={100}
-                stroke={false}
-              />
-              <LayerGroup>
-                <Circle
-                  center={[51.51, -0.08]}
-                  pathOptions={{ color: "green", fillColor: "green" }}
-                  radius={100}
-                />
-              </LayerGroup>
-            </LayerGroup>
-          </LayersControl.Overlay>
         </LayersControl>
+
         <button
           onClick={() => {
-            map.locate();
+            setShowLocation(!showLocation);
           }}
           style={{
             position: "absolute",
@@ -105,7 +111,7 @@ export default function LeafletMap() {
           Find my location
         </button>
 
-        <LocationMarker />
+        <LocationMarker showLocation={showLocation} />
       </MapContainer>
     </div>
   );
