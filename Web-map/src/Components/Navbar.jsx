@@ -41,8 +41,8 @@ const Navbar = () => {
                 </NavLink>
               </Typography>
               <Typography>
-                <NavLink to="layers" className="navbarItem">
-                  layers
+                <NavLink to="reverseGeocoding" className="navbarItem">
+                  ReverseGeocoding
                 </NavLink>
               </Typography>
 
