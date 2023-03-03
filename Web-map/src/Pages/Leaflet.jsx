@@ -90,9 +90,7 @@ export default function LeafletMap() {
           </LayersControl.BaseLayer>
           <LayersControl.Overlay name="Marker with popup">
             <Marker position={Allcenter}>
-              <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-              </Popup>
+              <Popup>place</Popup>
             </Marker>
           </LayersControl.Overlay>
         </LayersControl>
@@ -110,7 +108,6 @@ export default function LeafletMap() {
         >
           Find my location
         </button>
-
         <LocationMarker showLocation={showLocation} />
       </MapContainer>
     </div>
