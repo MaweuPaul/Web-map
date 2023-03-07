@@ -50,7 +50,7 @@ const NavbarDrawer = () => {
                     </NavLink>
                   </Typography>
                   <Typography padding={1}>
-                    <NavLink to="layers" className="navbarItemDrawer">
+                    <NavLink to="reverseGeocoding" className="navbarItemDrawer">
                       layers
                     </NavLink>
                   </Typography>

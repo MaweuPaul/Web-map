@@ -35,7 +35,7 @@ const RoutePages = () => {
         {" "}
         <Route path="info" element={<Info />} />
         <Route path="leaflet" element={<Leaflet />} />
-        <Route path="layers" element={<Layers />} />
+        <Route path="reverseGeocoding" element={<Layers />} />
       </Route>
 
       <Route path="*" element={<Error />} />
