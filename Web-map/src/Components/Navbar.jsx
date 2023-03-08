@@ -12,6 +12,20 @@ import Logo from "../Images/logo.png";
 import NavbarDrawer from "./NavbarDrawer";
 import SignOut from "../Utilities/SignOut";
 import { Box } from "@mui/system";
+const navItems = [
+  {
+    name: "About",
+    path: "/home/info",
+  },
+  {
+    name: "Leaflet",
+    path: "/home/leaflet",
+  },
+  {
+    name: "reverse Geocoding",
+    path: "/home/reverseGeocoding",
+  },
+];
 const Navbar = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
@@ -26,32 +40,25 @@ const Navbar = () => {
               style={{ width: 50, height: 50, borderRadius: 50 }}
             />
           </Link>
-          {isMatch ? (
-            <NavbarDrawer />
-          ) : (
-            <div className="navbarItems" style={{ marginLeft: "auto" }}>
-              <Typography>
-                <NavLink to="info" className="navbarItem">
-                  About
-                </NavLink>
-              </Typography>
-              <Typography>
-                <NavLink to="leaflet" className="navbarItem">
-                  leaflet
-                </NavLink>
-              </Typography>
-              <Typography>
-                <NavLink to="reverseGeocoding" className="navbarItem">
-                  ReverseGeocoding
-                </NavLink>
-              </Typography>
-
-              <Box sx={{}}>
-                <Typography color="green">signed in as{}</Typography>
-              </Box>
-              <SignOut />
-            </div>
-          )}
+          {navItems.map((item) => {
+            return (
+              <>
+                {isMatch ? (
+                  <NavbarDrawer />
+                ) : (
+                  <Typography>
+                    <NavLink to={item.path} className="navbarItem">
+                      {item.name}
+                    </NavLink>
+                  </Typography>
+                )}
+              </>
+            );
+          })}
+          <Box sx={{ display: { sm: "none" } }}>
+            <Typography color="green">signed in as{}</Typography>
+            <SignOut />
+          </Box>
         </Toolbar>
       </AppBar>
     </div>
