@@ -55,7 +55,17 @@ const Navbar = () => {
               </>
             );
           })}
-          <Box sx={{ display: { sm: "none" } }}>
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                sm: "none",
+                md: "block",
+                lg: "block",
+                xl: "block",
+              },
+            }}
+          >
             <Typography color="green">signed in as{}</Typography>
             <SignOut />
           </Box>
