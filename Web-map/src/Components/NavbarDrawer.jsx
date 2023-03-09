@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Button,
   Drawer,
   IconButton,
   List,
@@ -13,6 +12,20 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Images/logo.png";
 import SignOut from "../Utilities/SignOut";
+const NavBarSmall = [
+  {
+    name: "info",
+    path: "/home/info",
+  },
+  {
+    name: "leaflet",
+    path: "/home/leaflet",
+  },
+  {
+    name: "reversegeocoding",
+    path: "/home/reverseGeocoding",
+  },
+];
 const NavbarDrawer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
@@ -38,22 +51,15 @@ const NavbarDrawer = () => {
                       style={{ width: 50, height: 50, borderRadius: 50 }}
                     />
                   </Link>
-                  <Typography padding={1}>
-                    <NavLink to="info" className="navbarItemDrawer">
-                      About
-                    </NavLink>
-                  </Typography>
-                  <Typography padding={1}>
-                    <NavLink to="leaflet" className="navbarItemDrawer">
-                      {" "}
-                      leaflet{" "}
-                    </NavLink>
-                  </Typography>
-                  <Typography padding={1}>
-                    <NavLink to="reverseGeocoding" className="navbarItemDrawer">
-                      layers
-                    </NavLink>
-                  </Typography>
+                  {NavBarSmall.map((navitem, Index) => {
+                    return (
+                      <Typography padding={1} key={Index}>
+                        <NavLink to={navitem.path} className="navbarItemDrawer">
+                          {navitem.name}
+                        </NavLink>
+                      </Typography>
+                    );
+                  })}
                 </div>
                 <SignOut />
               </ListItemText>
