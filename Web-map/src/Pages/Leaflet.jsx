@@ -12,7 +12,7 @@ import maplibreGl from "maplibre-gl";
 import maplibregl from "maplibre-gl";
 import { GeocodingControl } from "@maptiler/geocoding-control/maplibregl";
 import "@maptiler/geocoding-control/style.css";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import SimpleAccordion from "./Accordion";
 
 export default function LeafletMap() {
@@ -59,57 +59,64 @@ export default function LeafletMap() {
     );
   }
   return (
-    <div>
-      <div>
+    <Grid container>
+      <Grid item xs={12} md={2} lg={2} xl={2}>
         <SimpleAccordion />
-      </div>
-      <MapContainer
-        center={Allcenter}
-        zoom={10}
-        className="mapContainer"
-        id="map"
-      >
-        <LayersControl position="bottomright">
-          <LayersControl.BaseLayer name="Map">
-            <TileLayer
-              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
-              url="https://api.maptiler.com/maps/openstreetmap/style.json?key=XWgwvgf8UQRZ99UI0PR1"
-            />
-          </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="Satellite">
-            <TileLayer
-              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>'
-              url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=XWgwvgf8UQRZ99UI0PR1"
-            />{" "}
-          </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="Streets">
-            <TileLayer
-              attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>'
-              url="https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}@2x.png?key=XWgwvgf8UQRZ99UI0PR1"
-            />{" "}
-          </LayersControl.BaseLayer>
-          <LayersControl.Overlay name="Marker with popup">
-            <Marker position={Allcenter}>
-              <Popup>place</Popup>
-            </Marker>
-          </LayersControl.Overlay>
-        </LayersControl>
-
-        <button
-          onClick={() => {
-            setShowLocation(!showLocation);
-          }}
-          style={{
-            position: "absolute",
-            top: "80px",
-            left: "10px",
-            zIndex: "1000",
-          }}
+        <Typography color="black">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere
+          assumenda harum quaerat ducimus deserunt eius voluptates ut accusamus
+          reiciendis voluptas.
+        </Typography>
+      </Grid>
+      <Grid item xs={12} md={10} lg={10} xl={10}>
+        <MapContainer
+          center={Allcenter}
+          zoom={10}
+          className="mapContainer"
+          id="map"
         >
-          Find my location
-        </button>
-        <LocationMarker showLocation={showLocation} />
-      </MapContainer>
-    </div>
+          <LayersControl position="bottomright">
+            <LayersControl.BaseLayer name="Map">
+              <TileLayer
+                attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+                url="https://api.maptiler.com/maps/openstreetmap/style.json?key=XWgwvgf8UQRZ99UI0PR1"
+              />
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="Satellite">
+              <TileLayer
+                attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>'
+                url="https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=XWgwvgf8UQRZ99UI0PR1"
+              />{" "}
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="Streets">
+              <TileLayer
+                attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>'
+                url="https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}@2x.png?key=XWgwvgf8UQRZ99UI0PR1"
+              />{" "}
+            </LayersControl.BaseLayer>
+            <LayersControl.Overlay name="Marker with popup">
+              <Marker position={Allcenter}>
+                <Popup>place</Popup>
+              </Marker>
+            </LayersControl.Overlay>
+          </LayersControl>
+
+          <button
+            onClick={() => {
+              setShowLocation(!showLocation);
+            }}
+            style={{
+              position: "absolute",
+              top: "80px",
+              left: "10px",
+              zIndex: "1000",
+            }}
+          >
+            Find my location
+          </button>
+          <LocationMarker showLocation={showLocation} />
+        </MapContainer>
+      </Grid>
+    </Grid>
   );
 }
