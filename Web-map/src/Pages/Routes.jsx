@@ -6,12 +6,13 @@ import {
   Leaflet,
   Info,
   Layers,
+  RoutingMachine,
 } from "../Components/Index";
 
 const RoutePages = () => {
   const Login = lazy(() => import("./Login"));
   const Home = lazy(() => import("./Home"));
-
+  const Info = lazy(() => import("./Info"));
   return (
     <Routes>
       <Route
@@ -32,10 +33,18 @@ const RoutePages = () => {
           </React.Suspense>
         }
       >
-        {" "}
-        <Route path="info" element={<Info />} />
+        <Route
+          path="info"
+          element={
+            <React.Suspense fallback={<LoadingSpinner />}>
+              <Info />
+            </React.Suspense>
+          }
+        ></Route>
+
         <Route path="leaflet" element={<Leaflet />} />
         <Route path="reverseGeocoding" element={<Layers />} />
+        <Route path="route" element={<RoutingMachine />} />
       </Route>
 
       <Route path="*" element={<Error />} />

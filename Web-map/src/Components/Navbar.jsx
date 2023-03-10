@@ -25,6 +25,10 @@ const navItems = [
     name: "reverse Geocoding",
     path: "/home/reverseGeocoding",
   },
+  {
+    name: "route",
+    path: "/home/route",
+  },
 ];
 const Navbar = () => {
   const theme = useTheme();
@@ -57,6 +61,9 @@ const Navbar = () => {
           })}
           <Box
             sx={{
+              position: "absolute",
+              top: 0,
+              right: 0,
               display: {
                 xs: "none",
                 sm: "none",
