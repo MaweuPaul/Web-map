@@ -25,6 +25,10 @@ const NavBarSmall = [
     name: "reversegeocoding",
     path: "/home/reverseGeocoding",
   },
+  {
+    name: "route",
+    path: "/home/route",
+  },
 ];
 const NavbarDrawer = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
