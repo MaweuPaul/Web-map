@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import maplibregl from "maplibre-gl";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
+import { width } from "@mui/system";
 
 const key = "XWgwvgf8UQRZ99UI0PR1";
 
@@ -36,7 +37,7 @@ export default function Map() {
         type: "circle",
         source: "search-results",
         paint: {
-          "circle-radius": 8,
+          "circle-radius": 2,
           "circle-color": "#B42222",
           "circle-opacity": 0.5,
         },
@@ -71,15 +72,21 @@ export default function Map() {
   }, []);
 
   return (
-    <div>
-      <Typography variant="h2" color="black">
-        {" "}
-        click anywere
-      </Typography>{" "}
-      <div ref={mapContainer} style={{ height: "400px" }} />
-      <div id="results">
-        <ul id="search-results"></ul>
-      </div>
-    </div>
+    <Grid container margin={2}>
+      <Grid item xm={12} sm={12} md={3} lg={3} xl={3}>
+        <Typography variant="subtitle1" color="green">
+          About geocoding
+        </Typography>
+        <Typography color="black">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, in?
+        </Typography>
+      </Grid>
+      <Grid item xm={12} sm={12} md={9} lg={9} xl={9} mt={2}>
+        <div ref={mapContainer} style={{ height: "350px", width: "95%" }} />
+        <div id="results">
+          <ul id="search-results"></ul>
+        </div>
+      </Grid>
+    </Grid>
   );
 }
