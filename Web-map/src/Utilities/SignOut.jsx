@@ -18,8 +18,8 @@ const SignOut = () => {
   return (
     <>
       <Button
+        sx={{ margin: 2 }}
         disableRipple
-        disableElevation
         size="small"
         variant="contained"
         onClick={handleSignOut}

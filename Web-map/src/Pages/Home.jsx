@@ -1,23 +1,34 @@
-import { Drawer } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect } from "react";
-import { GrHome } from "react-icons/gr";
-import { Link, Outlet } from "react-router-dom";
-import { Footer, Navbar } from "../Components/Index";
-
+import { Outlet, useNavigate } from "react-router-dom";
+import { Footer, LoadingSpinner, Navbar } from "../Components/Index";
+import { auth } from "../Utilities/Auth";
+import { useAuthState } from "react-firebase-hooks/auth";
 const Home = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Webmap";
   });
-  return (
-    <div>
-      <Navbar />
-      <Box mt={10}>
-        <Outlet />
-      </Box>
-      <Footer />
-    </div>
-  );
+
+  const [user, loading] = useAuthState(auth);
+  // to check if user is logged in
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+  if (!user) {
+    navigate("/");
+  }
+  if (user) {
+    return (
+      <div>
+        <Navbar user={user.displayName} displayPicture={user.photoURL} />
+        <Box mt={10}>
+          <Outlet />
+        </Box>
+        <Footer />
+      </div>
+    );
+  }
 };
 
 export default Home;

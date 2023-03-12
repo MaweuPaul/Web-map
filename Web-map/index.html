@@ -1,63 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link rel="stylesheet" href="leaflet-routing-machine.css" />
+    <title>web Mappers</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href='https://unpkg.com/maplibre-gl@2.4.0/dist/maplibre-gl.css' rel='stylesheet' />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-  <title> web Mappers</title>
-</head>
-
-<body>
-  <style>
-    #dots {
-      position: absolute;
-      transform: translate(50%, 50%);
-      right: 50%;
-      left: 50%;
-      top: 50%;
-      bottom: 50%;
-
-    }
-
-    .dots {
-      width: 56px;
-      height: 26.9px;
-      background: radial-gradient(circle closest-side, #0b6b72 90%, #0000) 0% 50%,
-        radial-gradient(circle closest-side, #0b6b72 90%, #0000) 50% 50%,
-        radial-gradient(circle closest-side, #0b6b72 90%, #0000) 100% 50%;
-      background-size: calc(100%/3) 13.4px;
-      background-repeat: no-repeat;
-      animation: dots-7ar3yq 1s infinite linear;
-
-    }
-
-    @keyframes dots-7ar3yq {
-      20% {
-        background-position: 0% 0%, 50% 50%, 100% 50%;
+  <body>
+    <style>
+      #dots {
+        position: absolute;
+        transform: translate(50%, 50%);
+        right: 50%;
+        left: 50%;
+        top: 50%;
+        bottom: 50%;
       }
 
-      40% {
-        background-position: 0% 100%, 50% 0%, 100% 50%;
+      .dots {
+        width: 56px;
+        height: 26.9px;
+        background: radial-gradient(circle closest-side, #0b6b72 90%, #0000) 0%
+            50%,
+          radial-gradient(circle closest-side, #0b6b72 90%, #0000) 50% 50%,
+          radial-gradient(circle closest-side, #0b6b72 90%, #0000) 100% 50%;
+        background-size: calc(100% / 3) 13.4px;
+        background-repeat: no-repeat;
+        animation: dots-7ar3yq 1s infinite linear;
       }
 
-      60% {
-        background-position: 0% 50%, 50% 100%, 100% 0%;
-      }
+      @keyframes dots-7ar3yq {
+        20% {
+          background-position: 0% 0%, 50% 50%, 100% 50%;
+        }
 
-      80% {
-        background-position: 0% 50%, 50% 50%, 100% 100%;
+        40% {
+          background-position: 0% 100%, 50% 0%, 100% 50%;
+        }
+
+        60% {
+          background-position: 0% 50%, 50% 100%, 100% 0%;
+        }
+
+        80% {
+          background-position: 0% 50%, 50% 50%, 100% 100%;
+        }
       }
-    }
-  </style>
-  <div id="root">
-    <div id="dots">
-      <div class="dots"></div>
+    </style>
+    <div id="root">
+      <div id="dots">
+        <div class="dots"></div>
+      </div>
     </div>
-  </div>
-  <script type="module" src="/src/main.jsx"></script>
-</body>
-
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

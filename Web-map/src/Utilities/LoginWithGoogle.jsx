@@ -13,9 +13,6 @@ const LoginWithGoogle = () => {
     signInWithPopup(auth, provider)
       .then((user) => {
         navigate("home/info");
-        const userName = user.user.displayName;
-        const displayPicture = user.user.photoURL;
-        console.log(user, userName, displayPicture);
       })
       .catch((error) => {
         setError(
