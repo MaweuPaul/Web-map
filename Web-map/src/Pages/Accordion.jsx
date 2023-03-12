@@ -20,17 +20,15 @@ export default function SimpleAccordion() {
           </Alert>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
-            <ol style={{ marginLeft: "2rem" }}>
-              <li>
-                only the map layer or the layer which originaly loads can search
-                for locations
-              </li>
-              <li>
-                find my location works only in street view and in satelite view
-              </li>
-            </ol>
-          </Typography>
+          <ol style={{ marginLeft: "2rem" }}>
+            <li>
+              only the map layer or the layer which originaly loads can search
+              for locations
+            </li>
+            <li>
+              find my location works only in street view and in satelite view
+            </li>
+          </ol>
         </AccordionDetails>
       </Accordion>
     </div>

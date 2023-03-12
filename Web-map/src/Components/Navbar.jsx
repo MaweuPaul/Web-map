@@ -1,17 +1,21 @@
-import React from "react";
-
+import React, { useContext } from "react";
 import {
   AppBar,
   Toolbar,
   Typography,
   useTheme,
   useMediaQuery,
+  Avatar,
+  Stack,
 } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Images/logo.png";
 import NavbarDrawer from "./NavbarDrawer";
 import SignOut from "../Utilities/SignOut";
 import { Box } from "@mui/system";
+import { auth } from "../Utilities/Auth";
+import { useAuthState } from "react-firebase-hooks/auth";
+
 const navItems = [
   {
     name: "About",
@@ -30,9 +34,12 @@ const navItems = [
     path: "/home/route",
   },
 ];
-const Navbar = () => {
+
+const Navbar = ({ user, displayPicture }) => {
+  const [user2, loading] = useAuthState(auth);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
     <div className="navbar">
       <AppBar sx={{ backgroundColor: "transparent", position: "fixed" }}>
@@ -44,11 +51,14 @@ const Navbar = () => {
               style={{ width: 50, height: 50, borderRadius: 50 }}
             />
           </Link>
-          {navItems.map((item) => {
+          {navItems.map((item, index) => {
             return (
-              <>
+              <div key={index}>
                 {isMatch ? (
-                  <NavbarDrawer />
+                  <NavbarDrawer
+                    user={user2.displayName}
+                    displayPicture={user2.photoURL}
+                  />
                 ) : (
                   <Typography>
                     <NavLink to={item.path} className="navbarItem">
@@ -56,13 +66,14 @@ const Navbar = () => {
                     </NavLink>
                   </Typography>
                 )}
-              </>
+              </div>
             );
           })}
           <Box
+            flexDirection="row"
             sx={{
               position: "absolute",
-              top: 0,
+              top: 4,
               right: 0,
               display: {
                 xs: "none",
@@ -73,8 +84,18 @@ const Navbar = () => {
               },
             }}
           >
-            <Typography color="green">signed in as{}</Typography>
-            <SignOut />
+            <Box display="flex">
+              <Avatar
+                alt="logged in user image"
+                src={displayPicture}
+                sx={{ margin: 1 }}
+              />
+              <Typography color="black" m={2}>
+                {" "}
+                {user}
+              </Typography>
+              <SignOut />
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>

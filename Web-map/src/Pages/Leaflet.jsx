@@ -59,7 +59,7 @@ export default function LeafletMap() {
     );
   }
   return (
-    <Grid container>
+    <Grid container m={1}>
       <Grid item xs={12} md={2} lg={2} xl={2}>
         <SimpleAccordion />
         <Typography color="black">

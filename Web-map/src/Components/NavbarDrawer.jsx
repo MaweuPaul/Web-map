@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Avatar,
   Drawer,
   IconButton,
   List,
@@ -12,6 +13,8 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../Images/logo.png";
 import SignOut from "../Utilities/SignOut";
+import { Box } from "@mui/system";
+
 const NavBarSmall = [
   {
     name: "info",
@@ -30,7 +33,7 @@ const NavBarSmall = [
     path: "/home/route",
   },
 ];
-const NavbarDrawer = () => {
+const NavbarDrawer = ({ user, displayPicture }) => {
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
     <div>
@@ -55,9 +58,9 @@ const NavbarDrawer = () => {
                       style={{ width: 50, height: 50, borderRadius: 50 }}
                     />
                   </Link>
-                  {NavBarSmall.map((navitem, Index) => {
+                  {NavBarSmall.map((navitem, index) => {
                     return (
-                      <Typography padding={1} key={Index}>
+                      <Typography padding={1} key={index}>
                         <NavLink to={navitem.path} className="navbarItemDrawer">
                           {navitem.name}
                         </NavLink>
@@ -65,7 +68,17 @@ const NavbarDrawer = () => {
                     );
                   })}
                 </div>
-                <SignOut />
+
+                {/* to display the username and picture */}
+                <Box textAlign="center" bgcolor="green">
+                  <Typography color="black">{user}</Typography>
+                  <Avatar
+                    alt="logged in user image"
+                    src={displayPicture}
+                    sx={{ alignSelf: "center" }}
+                  />
+                  <SignOut />
+                </Box>
               </ListItemText>
             </ListItemIcon>
           </ListItemButton>

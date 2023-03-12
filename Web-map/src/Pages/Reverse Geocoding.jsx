@@ -75,13 +75,20 @@ export default function Map() {
     <Grid container margin={2}>
       <Grid item xm={12} sm={12} md={3} lg={3} xl={3}>
         <Typography variant="subtitle1" color="green">
-          About geocoding
+          About Reverse Geocoding
         </Typography>
         <Typography color="black">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, in?
+          Reverse geocoding is the process of converting a geographic location
+          (latitude and longitude) into a human-readable address or place name.
+          It is the opposite of geocoding, which involves converting a
+          human-readable address into a geographic location.
         </Typography>
       </Grid>
       <Grid item xm={12} sm={12} md={9} lg={9} xl={9} mt={2}>
+        <Typography color="black" textAlign="center">
+          {" "}
+          click anywhere
+        </Typography>
         <div ref={mapContainer} style={{ height: "350px", width: "95%" }} />
         <div id="results">
           <ul id="search-results"></ul>
